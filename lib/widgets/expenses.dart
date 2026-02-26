@@ -27,9 +27,17 @@ class _ExpensesState extends State<Expenses> {
     ),
   ];
 
+  void _openAddExpenseOverlay() {}
+
   @override
   Widget build(context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Expense Tracker'),
+        actions: [
+          IconButton(onPressed: _openAddExpenseOverlay, icon: Icon(Icons.add)),
+        ],
+      ),
       body: Column(
         children: [
           Text('The chart!'),
