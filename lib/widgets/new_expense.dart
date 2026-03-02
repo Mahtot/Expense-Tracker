@@ -73,6 +73,7 @@ class _NewExpenseState extends State<NewExpense> {
             category: _selectedCategory,
           );
           registeredExpenses.add(newExpense);
+          print(registeredExpenses[0]);
           Navigator.pop(context);
         }
   }
