@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class NewExpense extends StatefulWidget {
-  const NewExpense({super.key});
+  const NewExpense({super.key, required this.onAddExpense});
+
+  final void Function(Expense expense) onAddExpense;
 
   @override
   State<NewExpense> createState() {
     return _NewExpenseState();
   }
+  
 }
 
 var formatter = DateFormat.yMd();
@@ -72,7 +75,8 @@ class _NewExpenseState extends State<NewExpense> {
             date: _selectedDate!,
             category: _selectedCategory,
           );
-          registeredExpenses.add(newExpense);
+
+          widget.onAddExpense(newExpense);
           Navigator.pop(context);
         }
   }
@@ -80,7 +84,7 @@ class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
       child: Column(
         children: [
           TextField(
